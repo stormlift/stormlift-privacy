@@ -12,7 +12,7 @@
       <header class="hero">
         <img class="logo" src="assets/logo-header-white.svg" alt="StormLift">
         <h1>StormLift Privacy Policy</h1>
-        <p class="date">Effective date: July 28, 2026</p>
+        <p class="date">Last updated: July 22, 2026</p>
       </header>
 
       <article class="policy-card">
@@ -21,9 +21,9 @@
         <p>StormLift is a fitness planning and workout tracking app. StormLift is not a medical device and does not provide medical advice, diagnosis, treatment, or rehabilitation guidance.</p>
 
         <h2>Information Stored on Your Device</h2>
-        <p>StormLift stores app data locally on your device so the app can save your training plans, workouts, progress, profile, settings, and active workout state.</p>
+        <p>StormLift stores app data locally on your device so the app can save your training plans, workouts, progress, profile, preferences, settings, and active workout state.</p>
 
-        <p>This may include generated workouts, imported or custom workouts, exercises, sets, reps, weights, rest times, cardio duration, pace, incline, workout completion, workout history, progress data, and resumable workout checkpoints.</p>
+        <p>This may include generated workouts, imported or custom workouts, exercises, sets, reps, weights, rest times, cardio duration, pace, incline, workout completion, workout history, progress data, downloaded translation models, local translation cache entries, and resumable workout checkpoints.</p>
 
         <h2>Workout and Fitness Data</h2>
         <p>StormLift uses workout and fitness data to provide core app features such as workout planning, workout tracking, progress tracking, workout history, active session tracking, rest timers, and training reminders.</p>
@@ -39,22 +39,36 @@
         <h2>Imported and Exported Files</h2>
         <p>StormLift lets you import workout files and export workouts or app backups. These actions are user-initiated.</p>
 
-        <p>Exported files may contain workout, profile, progress, and settings data depending on the export type. You control where exported files are saved or shared.</p>
+        <p>StormLift can generate PDF, Excel, JSON, and CSV exports locally. Exported files may contain workout, profile, progress, and settings data depending on the export type. You control where exported files are saved or shared. No export file is sent to another app or service unless you choose a destination through Android's file or share interface.</p>
 
         <h2>Exercise Content and YMove</h2>
-        <p>StormLift uses YMove exercise content to support exercise search, exercise catalog lookup, exercise details, thumbnails, and videos.</p>
+        <p>StormLift uses YMove as an external exercise-content provider for the integrated exercise library. YMove content supports exercise search, exercise catalog lookup, exercise details, descriptions, instructions, important points, equipment, difficulty, muscle groups, thumbnails, and videos.</p>
 
-        <p>StormLift may send exercise-related requests to YMove, including exercise search terms, muscle groups, exercise slugs, pagination values, and media-related parameters.</p>
+        <p>StormLift may send exercise-related requests to YMove over HTTPS, including exercise search terms, muscle-group filters, exercise slugs or identifiers, pagination values, media-related parameters, and StormLift's YMove API credentials.</p>
 
         <p>Based on the current app implementation, StormLift does not upload your saved workout history, profile data, or progress data to YMove.</p>
+
+        <p>Exercise names, identifiers, slugs, muscle groups, and other canonical metadata remain unchanged. Machine translation is applied only to supported descriptive exercise-guide content.</p>
+
+        <h2>Machine Translation</h2>
+        <p>StormLift uses Google ML Kit Translation to translate supported YMove exercise descriptions, instructions, and important points on demand. Translation is performed on your device using downloaded language models. StormLift does not send the source exercise text or translated output to a cloud translation API.</p>
+
+        <p>The original English exercise-guide content remains available. Automatic translations are machine generated, may contain inaccuracies, and are provided for convenience. Check the English original where precision matters.</p>
+
+        <p>Translated exercise-guide content may be cached locally in app-private storage to improve performance. Cache entries are tied to the exercise, target language, and source-content hash, so cached translations can be refreshed when the source content changes.</p>
+
+        <p>Google ML Kit may communicate with Google to download or update translation models and process limited operational or diagnostic information, such as device and app information, API configuration, source and target language settings, input and output size metrics, performance information, usage events, and error information. Google documents ML Kit's applicable transmitted operational data as encrypted in transit.</p>
 
         <h2>Remote Thumbnails and Videos</h2>
         <p>StormLift may load remote exercise thumbnails and videos from URLs provided by YMove. Loading this media may cause your device to connect to those remote media hosts.</p>
 
         <h2>Notifications and Reminders</h2>
-        <p>StormLift uses notifications for active workout/rest timer updates and optional training reminders. Reminder scheduling happens locally on your device.</p>
+        <p>StormLift uses notifications for active workout and rest-timer updates and optional training reminders. Reminder scheduling and notification content are generated locally on your device.</p>
 
-        <p>Notification permission is requested when needed for these features.</p>
+        <p>Notification content may be visible on your lock screen depending on your Android settings. You can manage notification permission and visibility through Android settings.</p>
+
+        <h2>Permissions</h2>
+        <p>StormLift requests only the Android permissions needed for released app features: Internet access for YMove content, remote media, and ML Kit model downloads; vibration for haptic feedback; notification permission for reminders and active workout/rest timer notifications; and foreground service permissions for the active workout/rest timer service.</p>
 
         <h2>Feedback Emails</h2>
         <p>If you send feedback from the app, StormLift opens your email app.</p>
@@ -66,9 +80,9 @@
         <p><a href="mailto:stormliftapp@gmail.com">stormliftapp@gmail.com</a></p>
 
         <h2>Android Backup and Device Transfer</h2>
-        <p>Android backup and device transfer may include StormLift’s local app data, such as workout data, profile data, settings, progress, and profile images.</p>
+        <p>Android Auto Backup and device transfer may include StormLift's local app data, such as workout data, profile data, settings, progress, profile images, and local translation cache files, depending on your Android and Google account backup settings.</p>
 
-        <p>The YMove exercise catalog cache is excluded from Android backup and device transfer.</p>
+        <p>The YMove exercise catalog cache is excluded from Android backup and device transfer. ML Kit language model files may be managed separately by Android or Google services and are not StormLift-operated server backups.</p>
 
         <h2>Data Deletion</h2>
         <p>You can delete workouts and reset training data inside the app.</p>
@@ -89,7 +103,13 @@
         <p>StormLift does not currently include in-app purchases or subscriptions.</p>
 
         <h2>No Analytics or Crash Reporting SDK</h2>
-        <p>StormLift does not currently include Firebase Analytics, Crashlytics, Sentry, or similar analytics or crash reporting SDKs.</p>
+        <p>StormLift does not currently include a product analytics SDK, advertising SDK, or crash-reporting SDK. ML Kit may process limited operational and diagnostic information as described above, but StormLift does not use it for advertising tracking.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>StormLift currently uses YMove for exercise-library content, Google ML Kit for on-device translation, Android and Google services for optional device backup, device transfer, notifications, model management, and Google Play distribution, and your chosen email app for optional feedback. Third-party apps or services you select for exported files, shared PDFs, backups, or feedback email process information according to their own privacy policies.</p>
+
+        <h2>Data Sharing</h2>
+        <p>StormLift does not sell your personal data and does not share personal data for advertising. Information may leave your device only when needed for released app features, such as YMove exercise-content requests, Google ML Kit model and diagnostic operations, Android or Google backup/device services if enabled, Google Play distribution, feedback email you initiate, or exports and shares you choose.</p>
 
         <h2>Children and Target Audience</h2>
         <p>StormLift is not designed as a children-directed app. If you are under the age required by your country or region to use fitness apps independently, use StormLift only with permission and supervision from a parent or guardian.</p>
@@ -102,7 +122,7 @@
         <p>Train within your ability, use proper technique, and stop exercising if something feels wrong.</p>
 
         <h2>Changes to This Policy</h2>
-        <p>This Privacy Policy may be updated from time to time. The effective date at the top of this policy indicates when it was last updated.</p>
+        <p>This Privacy Policy may be updated from time to time. The last updated date at the top of this policy indicates when it was last updated.</p>
 
         <h2>Contact</h2>
         <p>If you have questions about this Privacy Policy, contact:</p>
