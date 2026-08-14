@@ -13,7 +13,7 @@
         <img class="logo" src="assets/logo-header-white.svg" alt="StormLift">
         <p class="eyebrow">Legal information</p>
         <h1>Privacy Policy and Terms of Use</h1>
-        <p class="effective-date">Version 2.0 · Effective 3 August 2026 · Reviewed for Android 1.1.6</p>
+        <p class="effective-date">Privacy Policy version 2.1 · Effective 14 August 2026 · Terms effective 3 August 2026</p>
         <nav class="legal-nav" aria-label="Legal documents">
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Terms of Use</a>
@@ -24,7 +24,7 @@
       <article class="policy-card" id="privacy">
         <p class="section-label">Privacy Policy</p>
         <h2>1. Controller and scope</h2>
-        <p>Roberta Virzi PT is the controller for personal data processed through the StormLift Android app and this legal website. StormLift Labs is a product operated by Roberta Virzi PT, registered with the Dutch Chamber of Commerce under number 42094735. StormLift Labs and StormLift are product/brand names, not separate legal entities.</p>
+        <p>Roberta Virzi PT is the controller for personal data processed through the StormLift mobile apps for Android and iOS and this legal website. StormLift Labs is a product operated by Roberta Virzi PT, registered with the Dutch Chamber of Commerce under number 42094735. StormLift Labs and StormLift are product/brand names, not separate legal entities.</p>
         <address>
           Roberta Virzi PT<br>
           Product/brand: StormLift Labs / StormLift<br>
@@ -42,30 +42,32 @@
         <ul>
           <li><strong>Profile data:</strong> display name, training goal, age, gender preference and profile photo.</li>
           <li><strong>Fitness and body data:</strong> workouts, exercises, sets, repetitions, weights, rest times, duration, pace, incline, completion history, progress, body weight, height and calculated BMI.</li>
-          <li><strong>App data:</strong> exercise preferences, settings, reminders, active and resumable workout checkpoints, generated or imported plans, and local translation cache entries.</li>
+          <li><strong>App data:</strong> exercise preferences, settings, reminders, active and resumable workout checkpoints, generated or imported plans and, on Android, local translation cache entries.</li>
           <li><strong>User-directed files and messages:</strong> imported workout files, manual backups, exports, shared files and feedback emails.</li>
-          <li><strong>Technical requests:</strong> exercise search terms, filters, identifiers and media requests sent to YMove or its media hosts; app, device and operational information processed by Google ML Kit as described below.</li>
+          <li><strong>Technical requests:</strong> exercise search terms, filters, identifiers and media requests sent to YMove or its media hosts; on Android, app, device and operational information processed by Google ML Kit as described below.</li>
         </ul>
-        <p>StormLift does not intentionally collect precise location, contacts, payment data, advertising identifiers or data from Health Connect.</p>
+        <p>StormLift does not intentionally collect precise location, contacts, payment data, advertising identifiers or data from Health Connect or Apple Health.</p>
 
         <h2>3. Purposes and legal bases</h2>
         <ul>
           <li>To provide workout creation, tracking, history, progress, reminders, import, export, backup and restore features: performance of the agreement you make with Roberta Virzi PT by accepting the Terms (GDPR Article 6(1)(b)).</li>
-          <li>To process fitness and body data you choose to enter, including information that may qualify as data concerning health: your explicit consent in the onboarding safety screen (GDPR Articles 6(1)(a) and 9(2)(a)). You can withdraw your consent at any time from Settings using <strong>Delete all StormLift data</strong>. This deletes all app-managed data, including the fitness and body data required for these features, and may prevent StormLift from continuing to provide them. Withdrawal does not affect earlier lawful processing.</li>
+          <li>To process fitness and body data you choose to enter, including information that may qualify as data concerning health: your explicit consent in the onboarding safety screen (GDPR Articles 6(1)(a) and 9(2)(a)). You can withdraw your consent at any time from Settings using the in-app <strong>Delete All Data</strong> action (called <strong>Delete all StormLift data</strong> on Android). This deletes all app-managed data, including the fitness and body data required for these features, and may prevent StormLift from continuing to provide them. Withdrawal does not affect earlier lawful processing.</li>
           <li>To answer feedback or support email: your request and, where needed, Roberta Virzi PT’s legitimate interest in providing support (GDPR Articles 6(1)(b) and 6(1)(f)).</li>
           <li>To establish, exercise or defend legal claims and meet legal duties where applicable (GDPR Articles 6(1)(c), 6(1)(f) and 9(2)(f)).</li>
         </ul>
 
-        <h2>4. Local storage, Android backup and device transfer</h2>
-        <p>StormLift stores its app state in private storage on your device. StormLift does not operate an account server or cloud-sync service for your profile, workout history or progress.</p>
+        <h2>4. Local storage, platform backup, device transfer and manual backup</h2>
+        <p>StormLift stores app-managed state in private storage on your device. StormLift does not operate an account server or its own cloud-sync service for your profile, workout history or progress.</p>
         <p>Android Auto Backup remains enabled. If backup is enabled in your Android and Google account settings, Android may automatically upload StormLift app files and settings—including workouts, history, progress, profile information and profile photos—to the backup service associated with your Google account. Android may restore that data after reinstalling the app or during device transfer. YMove catalog and translation cache files are excluded from StormLift’s Android backup rules.</p>
-        <p>The in-app <strong>Delete all StormLift data</strong> action deletes app-managed data and caches from the current device and notifies Android that the backup data changed. Android controls when a new backup snapshot replaces an older one. Manage or delete device backups through your Android or Google account settings. Files you previously exported or shared remain wherever you saved or sent them and must be deleted there separately.</p>
+        <p>On iOS, eligible durable StormLift data in normal app storage—including workouts, history, plans, profile and body information, preferences, settings, onboarding and stored consent versions—may participate in Apple device backup, iCloud backup or device transfer according to your Apple and system configuration. Apple controls those backup and transfer facilities; StormLift does not operate the associated cloud storage.</p>
+        <p>StormLift may also let you create manual backup or export files containing durable app data, including profile and body data, workouts, history, plans, settings, preferences, onboarding and stored legal consent versions. Restored consent is checked against the requirements current at the time of restore; missing or older consent must be accepted again. Once a manual backup, export or shared file is saved outside StormLift-managed storage, it remains where you saved or sent it and must be deleted there separately.</p>
 
         <h2>5. Third-party services and recipients</h2>
         <ul>
           <li><strong>YMove:</strong> licensed exercise names, instructions, images and videos. StormLift sends exercise queries, filters, slugs or identifiers and related request data over HTTPS. Saved profile, body measurements and workout history are not intentionally sent to YMove.</li>
-          <li><strong>Google ML Kit Translation:</strong> translates supported exercise guidance on the device after downloading language models. Google states that ML Kit processes device information, app information, configured languages, performance metrics and identifiers for diagnostics and usage analytics. Google states that this SDK data is encrypted in transit and not shared onward by ML Kit.</li>
+          <li><strong>Google ML Kit Translation on Android:</strong> translates supported exercise guidance on the device after downloading language models. Google states that ML Kit processes device information, app information, configured languages, performance metrics and identifiers for diagnostics and usage analytics. Google states that this SDK data is encrypted in transit and not shared onward by ML Kit.</li>
           <li><strong>Android and Google services:</strong> optional Auto Backup, device transfer, notification delivery, ML Kit model management and Google Play distribution.</li>
+          <li><strong>Apple and iOS services:</strong> optional device backup, iCloud backup, device transfer, local notification delivery and App Store distribution.</li>
           <li><strong>Remote media hosts:</strong> loading YMove-provided thumbnails or videos discloses ordinary network request data such as IP address and device/browser headers to the serving host.</li>
           <li><strong>Your chosen apps and services:</strong> email, file, cloud-storage or sharing providers process data only when you direct an export, share or feedback action to them.</li>
           <li><strong>GitHub Pages:</strong> hosts this static legal website and may process ordinary server request logs under GitHub’s own privacy terms.</li>
@@ -73,15 +75,16 @@
         <p>Roberta Virzi PT does not sell personal data and does not share it for advertising. Third-party providers may process data outside the European Economic Area under their applicable transfer mechanisms and privacy terms.</p>
 
         <h2>6. Retention and deletion</h2>
-        <p>App data remains on the device until you edit it, delete individual items, use <strong>Delete all StormLift data</strong>, clear app storage or uninstall the app, subject to Android backup behavior described above. Translation and exercise cache entries remain until refreshed, cleared or deleted. Feedback email is retained only as long as reasonably needed to respond, maintain support records or meet legal obligations.</p>
-        <p>StormLift has no account-deletion process because it has no user accounts. The in-app deletion action removes profile data, body measurements, the profile photo, workouts, history, checkpoints, preferences, settings and cached app data from the current device.</p>
+        <p>App data remains on the device until you edit it, delete individual items, use the in-app <strong>Delete All Data</strong> action, clear app storage or uninstall the app, subject to the Android and iOS backup behavior described above. Translation and exercise cache entries remain until refreshed, cleared or deleted. Feedback email is retained only as long as reasonably needed to respond, maintain support records or meet legal obligations.</p>
+        <p>StormLift has no account-deletion process because it has no user accounts. Delete All Data removes StormLift-managed local data from the current device, including profile and body data, profile photos, workouts and history, checkpoints and active runtime state, preferences and settings, onboarding and legal consent state, and app-managed cache and temporary data. The app then returns to onboarding.</p>
+        <p>Delete All Data does not synchronously delete manual backups, exports or shared files outside StormLift-managed storage; historical Android, Google, Apple or iCloud backup copies controlled by platform infrastructure; system permissions; or unrelated system and account data. Manage platform backup copies through the applicable Google, Android, Apple or iOS settings. If you later restore a manual backup, restored consent is checked against the then-current requirements.</p>
 
         <h2>7. Your GDPR rights</h2>
-        <p>Subject to the conditions in the GDPR, you may request access, rectification, erasure, restriction, portability, or object to processing based on legitimate interests. You may withdraw consent at any time. Because most data is held only on your device, the fastest way to exercise control is through the app, an export, or <strong>Delete all StormLift data</strong>. Roberta Virzi PT may be unable to access or identify local-only data remotely.</p>
+        <p>Subject to the conditions in the GDPR, you may request access, rectification, erasure, restriction, portability, or object to processing based on legitimate interests. You may withdraw consent at any time. Because most data is held in app storage on your device or in backups and files controlled through your platform or chosen destination, the fastest way to exercise control is through the app, an export, Delete All Data, or the applicable platform and file-storage settings. Roberta Virzi PT may be unable to access or identify local-only data remotely.</p>
         <p>Send rights requests to <a href="mailto:stormliftapp@gmail.com">stormliftapp@gmail.com</a>. You may also complain to the Dutch Data Protection Authority (Autoriteit Persoonsgegevens) or the supervisory authority where you live or work.</p>
 
         <h2>8. Security</h2>
-        <p>StormLift uses Android app-private storage and HTTPS for remote requests. Manual exports and backups are protected by the destination you choose. No system can guarantee absolute security; keep your device and exported files protected and up to date.</p>
+        <p>StormLift uses private app storage on Android and iOS and HTTPS for remote requests. Manual exports and backups are protected by the destination you choose. No system can guarantee absolute security; keep your device and exported files protected and up to date.</p>
 
         <h2>9. Children</h2>
         <p>StormLift is intended only for people aged 18 and over and is not directed to children. Do not use the app if you are under 18.</p>
@@ -102,7 +105,7 @@
         <p>These Terms form an agreement between you and Roberta Virzi PT at the address above. StormLift Labs is a product operated by Roberta Virzi PT, registered with the Dutch Chamber of Commerce under number 42094735. You must be at least 18. By selecting the acceptance control in StormLift, you confirm that you meet the age requirement, have reviewed the safety notice and accept these Terms.</p>
 
         <h2>2. The service</h2>
-        <p>StormLift is a free Android app for general fitness planning, workout creation, import, tracking, history and progress review. There are no subscriptions, in-app purchases or advertisements. Features may change when reasonably necessary for safety, security, legal compliance or service improvement.</p>
+        <p>StormLift is a free mobile app for Android and iOS for general fitness planning, workout creation, import, tracking, history and progress review. There are no subscriptions, in-app purchases or advertisements. Features may change when reasonably necessary for safety, security, legal compliance or service improvement.</p>
 
         <h2>3. Licence and acceptable use</h2>
         <p>Roberta Virzi PT grants you a personal, limited, non-exclusive, non-transferable licence to use the app for lawful, non-commercial purposes. Do not misuse the app, interfere with its operation, bypass security controls, extract protected third-party content except through provided features, or use it in a way that infringes another person’s rights.</p>
@@ -114,13 +117,13 @@
         <p>StormLift is not a medical device. It does not provide medical advice and does not diagnose, treat, cure or prevent disease. It must not replace qualified healthcare advice.</p>
         <p>Exercise involves inherent risk. Choose appropriate exercises, loads, technique, warm-up, progression, recovery and surroundings. Stop immediately and seek appropriate professional advice if you experience pain, dizziness, injury or unusual symptoms. Before starting or changing exercise, consult a qualified healthcare professional if you have an injury, symptoms, pregnancy or a health concern.</p>
 
-        <h2>6. YMove and Google translation</h2>
+        <h2>6. Third-party content and translation</h2>
         <p>StormLift uses licensed YMove exercise content, including exercise information and media. YMove and other third-party content remains owned by its respective rights holders. Availability may depend on those services.</p>
-        <p>Google ML Kit provides automatic on-device translation of supported exercise guidance. Translations may be inaccurate; check the original where precision matters. Learn more at <a href="https://translate.google.com">translate.google.com</a>.</p>
+        <p>On Android, Google ML Kit provides automatic on-device translation of supported exercise guidance. Translations may be inaccurate; check the original where precision matters. Learn more at <a href="https://translate.google.com">translate.google.com</a>.</p>
         <p class="google-notice">THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
 
         <h2>7. Your content, exports and backups</h2>
-        <p>You remain responsible for files and information you import, enter, export or share and must have the right to use them. StormLift does not claim ownership of your workout records or profile data. Android Auto Backup may copy app data to the backup service associated with your Google account as explained in the Privacy Policy.</p>
+        <p>You remain responsible for files and information you import, enter, export or share and must have the right to use them. StormLift does not claim ownership of your workout records or profile data. Eligible app data may participate in Android or Google backup and device transfer, or Apple, iCloud or iOS backup and device transfer, according to your platform configuration. StormLift may also let you create manual backup or export files. StormLift does not operate those platform backup services, and files you save outside the app remain under your control as explained in the Privacy Policy.</p>
 
         <h2>8. Availability and warranties</h2>
         <p>Roberta Virzi PT will use reasonable care and skill in providing the app. Third-party content, media, translations and network-dependent features may sometimes be unavailable or contain errors. Nothing in these Terms creates a guarantee of uninterrupted availability, fitness results or compatibility beyond rights that apply by law.</p>
@@ -132,7 +135,7 @@
         <p>Dutch law applies. This choice does not deprive you of mandatory consumer protections or access to courts available under the law of the country where you habitually reside. Contact Roberta Virzi PT first so a concern can be addressed informally; your right to use an available court or consumer dispute process is unaffected.</p>
 
         <h2>11. Changes and ending use</h2>
-        <p>You may stop using StormLift at any time and may delete app data through Settings. Roberta Virzi PT may discontinue or restrict the app where reasonably necessary, subject to mandatory consumer law. Material Terms changes will carry a new effective date and, where required, renewed in-app acceptance.</p>
+        <p>You may stop using StormLift at any time and may delete app-managed local data through Settings. Deletion does not remove exported files or historical platform backups outside StormLift’s control. Roberta Virzi PT may discontinue or restrict the app where reasonably necessary, subject to mandatory consumer law. Material Terms changes will carry a new effective date and, where required, renewed in-app acceptance.</p>
 
         <h2 id="contact">12. Contact</h2>
         <address>
