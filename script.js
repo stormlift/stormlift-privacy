@@ -43,7 +43,7 @@
     const copies = [...hero.querySelectorAll("[data-copy]")];
     const controls = [...hero.querySelectorAll("[data-slide-control]")];
     const slideCount = copies.length;
-    const autoplayDelay = 6500;
+    const autoplayDelay = 7000;
     let currentSlide = 0;
     let autoplayTimer = 0;
     let pointerStartX = null;
@@ -174,15 +174,15 @@
       const rect = element.getBoundingClientRect();
       const rawProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height * 0.58);
       const progress = clamp(rawProgress, 0, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased = 1 - Math.pow(1 - progress, 4);
 
-      element.style.setProperty("--motion-scale", (0.9 + eased * 0.1).toFixed(4));
-      element.style.setProperty("--motion-side-scale", (0.875 + eased * 0.125).toFixed(4));
-      element.style.setProperty("--motion-y", `${(52 * (1 - eased)).toFixed(2)}px`);
+      element.style.setProperty("--motion-scale", (0.965 + eased * 0.035).toFixed(4));
+      element.style.setProperty("--motion-side-scale", (0.95 + eased * 0.05).toFixed(4));
+      element.style.setProperty("--motion-y", `${(24 * (1 - eased)).toFixed(2)}px`);
       element.style.setProperty("--motion-opacity", clamp(progress * 1.7, 0, 1).toFixed(3));
-      element.style.setProperty("--shape-y", `${(36 * (1 - eased)).toFixed(2)}px`);
-      element.style.setProperty("--person-y", `${(24 * (1 - eased)).toFixed(2)}px`);
-      element.style.setProperty("--copy-y", `${(28 * (1 - eased)).toFixed(2)}px`);
+      element.style.setProperty("--shape-y", `${(18 * (1 - eased)).toFixed(2)}px`);
+      element.style.setProperty("--person-y", `${(12 * (1 - eased)).toFixed(2)}px`);
+      element.style.setProperty("--copy-y", `${(14 * (1 - eased)).toFixed(2)}px`);
     });
   };
 

@@ -2,44 +2,49 @@
 
 ## Comparison target
 
-- Source visual truth: `/Users/cris/Desktop/home-1.jpg` (primary), with `/Users/cris/Desktop/home-2.jpg` and `/Users/cris/Desktop/home-3.jpg` for alternate hero states.
-- Rendered implementation: `http://127.0.0.1:4173/`.
-- State: dark marketing homepage, hero state 1, Workouts, Focus, FAQ expanded, benefits, CTA, tablet and mobile hero states.
-- Browser/CSS viewports: 1280 × 960, 768 × 960 and 390 × 844 at device pixel ratio 1. The browser content captures are 1280 × 861, 768 × 780 and 390 × 780 pixels because browser chrome is excluded.
-- Source pixels: 1920 × 8027 at density 1. Focused source crops were normalized to the matching implementation capture size before comparison; this avoids treating the source's wider 1920-pixel desktop canvas as a defect at the 1280-pixel implementation viewport.
+- Source visual truth: `/Users/cris/Desktop/home-1.jpg` (primary collapsed-FAQ state), with `/Users/cris/Desktop/home-2.jpg` and `/Users/cris/Desktop/home-3.jpg` for alternate hero states.
+- Rendered implementation: `http://127.0.0.1:4174/`.
+- Primary comparison state: 1920-pixel desktop, hero state 0, collapsed FAQ.
+- Source pixels: 1920 × 8027. Implementation viewport: 1920 × 960 at device pixel ratio 1, stitched to 1920 × 8027 from consecutive in-app Browser captures.
+- Stable comparison captures temporarily neutralized reveal/autoplay motion without changing layout. The final Track comparison uses the production motion code after animations settled.
 
 ## Evidence
 
-- Full-view/hero comparison: `/private/tmp/stormlift-site-qa/comparison-hero-final.jpg`
-- Focused Workouts comparison: `/private/tmp/stormlift-site-qa/comparison-workouts-final.jpg`
-- Focused Focus comparison: `/private/tmp/stormlift-site-qa/comparison-focus-final.jpg`
-- Final desktop captures: `/private/tmp/stormlift-site-qa/homepage-1280-final-v2.png`, `/private/tmp/stormlift-site-qa/homepage-1280-workouts-final-v3.png`, `/private/tmp/stormlift-site-qa/homepage-1280-focus-final.png`, `/private/tmp/stormlift-site-qa/homepage-1280-faq-open.png`, `/private/tmp/stormlift-site-qa/homepage-1280-benefits.png`, `/private/tmp/stormlift-site-qa/homepage-1280-cta-final.png`
-- Final responsive captures: `/private/tmp/stormlift-site-qa/homepage-768-final.png`, `/private/tmp/stormlift-site-qa/homepage-390-final-v2.png`, `/private/tmp/stormlift-site-qa/homepage-390-workouts.png`, `/private/tmp/stormlift-site-qa/homepage-390-focus.png`, `/private/tmp/stormlift-site-qa/homepage-390-faq.png`, `/private/tmp/stormlift-site-qa/privacy-390.png`
+- Full source/implementation comparison: `/private/tmp/stormlift-fidelity-v2.367eag/qa/comparison-full-home1-vs-implementation.jpg`
+- Hero comparison: `/private/tmp/stormlift-fidelity-v2.367eag/qa/comparison-hero-home1-vs-implementation.jpg`
+- Feature comparison: `/private/tmp/stormlift-fidelity-v2.367eag/qa/comparison-features-home1-vs-implementation.jpg`
+- Ending comparison: `/private/tmp/stormlift-fidelity-v2.367eag/qa/comparison-ending-home1-vs-implementation.jpg`
+- Final production-motion Track comparison: `/private/tmp/stormlift-fidelity-v2.367eag/qa/comparison-track-final-home1-vs-implementation.jpg`
+- Final implementation: `/private/tmp/stormlift-fidelity-v2.367eag/qa/stormlift-1920-full-stitched.jpg`
+- Responsive captures: `/private/tmp/stormlift-fidelity-v2.367eag/qa/stormlift-1440-hero.jpg`, `/private/tmp/stormlift-fidelity-v2.367eag/qa/stormlift-1280-hero.jpg`, `/private/tmp/stormlift-fidelity-v2.367eag/qa/stormlift-1024-hero.jpg`, `/private/tmp/stormlift-fidelity-v2.367eag/qa/stormlift-768-hero.jpg`, `/private/tmp/stormlift-fidelity-v2.367eag/qa/stormlift-390-hero.jpg`.
 
 ## Required fidelity surfaces
 
-- Fonts and typography: passed. The implementation uses the product's bundled Outfit family in regular through extra-bold weights. Headline scale, uppercase treatment, body hierarchy, wrapping and optical weight remain aligned with the reference across the checked widths.
-- Spacing and layout rhythm: passed. Section ordering, black negative space, card grids, alternating feature composition, radii and desktop/mobile rhythm match the visual target without overlap or horizontal overflow.
-- Colors and visual tokens: passed. Warm, coach, focus and rainbow gradients are centralized as CSS tokens and retain the source palette, contrast and dark-background balance.
-- Image quality and asset fidelity: passed. All supplied StormLift product, athlete, store-badge, phone, FAQ and footer assets are used directly at their intended aspect ratios. No visible source asset was replaced with a placeholder, emoji, CSS drawing or handcrafted SVG.
-- Copy and content: passed. Marketing copy follows the supplied source and brief. Current legal text is preserved on dedicated pages, and unsupported App Store/social destinations are disabled instead of fabricated.
-- Interactions and accessibility: passed. Hero controls, autoplay, keyboard arrow navigation, mobile swipe, hash navigation, FAQ expansion, visible focus treatment, semantic buttons, alt text and reduced-motion paths were checked. Console errors/warnings: none.
+- Fonts and typography: passed. Bundled Outfit weights, headline hierarchy, line breaks, wordmark scale and body copy match the reference closely.
+- Spacing and layout rhythm: passed. The primary desktop section map now follows the 8027-pixel source: header 116, hero 964, app 1120, Workouts 1000, three 1000-pixel feature sections, FAQ 750, benefits 414, CTA 454 and footer 209 pixels.
+- Colors and visual tokens: passed. Reference gradient bands, dark surfaces, pastel card palette, glows and button treatments are preserved.
+- Image quality and asset fidelity: passed. Supplied StormLift phone, athlete, store-badge, icon and logo assets are used directly at source-appropriate proportions; no placeholders were introduced.
+- Copy and content: passed. The reference marketing copy and legal-route behavior are preserved. Unsupported App Store and social destinations remain disabled rather than linking to fabricated targets.
+- Interactions and accessibility: passed. Hero autoplay, direct controls, keyboard arrows, mobile swipe, FAQ disclosure, anchor offsets, focus states and disabled-link semantics were verified. Reduced-motion handling was inspected in code.
 
 ## Comparison history
 
 ### Pass 1 — blocked
 
-- [P1] The initial desktop hero left an exposed dark gap in hero state 1. Fixed by aligning the focus, warm and coach band stops into a contiguous 0–30%, 30–72%, 72–100% composition. Post-fix evidence: `homepage-1280-final-v2.png` and `comparison-hero-final.jpg`.
-- [P1] The final CTA heading overlapped the phone artwork at desktop width. Fixed by reducing the responsive headline ceiling while preserving the source hierarchy. Post-fix evidence: `homepage-1280-cta-final.png`.
-- [P1] Tablet and mobile hero badges, controls and wordmark collided. Fixed with breakpoint-specific bottom positions and 44-pixel touch targets. Post-fix evidence: `homepage-768-final.png` and `homepage-390-final-v2.png`.
-- [P1] Mobile side-phone positioning created clipped composition/overflow risk. Fixed by pinning the side phones to the section edges and preserving the center-phone hierarchy. Post-fix evidence: responsive captures and zero-overflow measurements at 320–1920 CSS pixels.
-- [P2] Desktop section proportions and card sizing were too large at intermediate widths. Fixed with clamp-based section, artwork, badge and card sizing. Post-fix evidence: desktop and focused comparison captures.
-- [P2] The legacy same-tab legal fragment path did not reroute after a hash changed without a reload. Fixed with a `hashchange` route handler. Post-fix behavior: `/#privacy`, `/#terms` and `/#contact` resolve to the canonical legal pages.
+- [P1] Desktop geometry diverged from the 1920-pixel reference: the header and hero were short, gradient bands and athletes were underscaled, the phone composition was too small, and the page extended to roughly 8440 pixels. Fixed with a reference-mapped desktop layout and exact major-section heights.
+- [P2] Workouts cards, alternating feature compositions, FAQ grid, benefits, CTA and footer were offset or proportionally inconsistent. Fixed with localized desktop geometry, source-derived card sizing and per-section art placement.
+- [P2] Hero navigation named the first destination “App” instead of “The App,” and the primary heading did not preserve the reference line hierarchy. Fixed in markup and typography rules.
 
-### Pass 2 — passed
+### Pass 2 — blocked
 
-- Re-captured the corrected desktop, tablet and mobile layouts at the same states.
-- Compared the normalized reference and implementation together for hero, Workouts and Focus.
+- Re-captured the full desktop and compared source and implementation in the same images.
+- [P2] Track artwork remained too tall and its athlete too narrow. Fixed with a localized Track art size and horizontal subject-scale adjustment.
+- [P2] Final CTA copy sat about 30 pixels above the source alignment. Fixed by removing the residual vertical translation.
+
+### Pass 3 — passed
+
+- Re-captured the corrected full page and final production-motion Track section.
+- Compared source and implementation together at 1920 pixels, then checked responsive captures at 1440, 1280, 1024, 768 and 390 pixels.
 - No actionable P0, P1 or P2 mismatch remains.
 
 ## Findings
@@ -48,15 +53,17 @@ No actionable P0, P1 or P2 findings remain.
 
 ## Follow-up polish
 
-- [P3] The implementation intentionally adapts the 1920-pixel reference proportions at narrower desktop widths, so exact subject positions and gradient stops vary slightly while preserving the same hierarchy and art direction.
-- [P3] Platform-level reduced-motion preference was verified in code but not emulated at the operating-system setting during this pass.
+- [P3] Minor anti-aliasing and gradient-stop differences remain between the browser render and the raster reference.
+- [P3] Narrower breakpoints intentionally reflow the 1920-pixel composition while preserving hierarchy; exact subject positions therefore vary from the desktop source.
+- [P3] The reduced-motion branch was inspected but the operating-system preference was not emulated during runtime QA.
 
 ## Implementation checklist
 
-- [x] Match the supplied assets, layout, palette and typography.
-- [x] Verify desktop, tablet and mobile responsive states.
-- [x] Verify core hero, FAQ and fragment-routing interactions.
-- [x] Confirm no broken images, console errors or horizontal overflow.
-- [x] Preserve the current legal content and canonical routes.
+- [x] Match the supplied desktop composition and all three hero states.
+- [x] Verify 1920, 1440, 1280, 1024, 768 and 390-pixel layouts with no horizontal overflow.
+- [x] Verify hero autoplay, direct controls, keyboard arrows and swipe.
+- [x] Verify FAQ, anchored navigation, legacy legal fragments and canonical legal routes.
+- [x] Confirm no broken page images or console errors.
+- [x] Preserve legal content and avoid Android/iOS application changes.
 
 final result: passed
