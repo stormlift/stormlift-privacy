@@ -8,10 +8,19 @@
     x: ""
   });
 
-  // Temporary release visibility: the body data attributes are the single restore switch.
-  const SITE_FEATURES = Object.freeze({
-    showIosDownload: document.body.dataset.showIosDownload !== "false",
-    showSocialLinks: document.body.dataset.showSocialLinks !== "false"
+  /*
+   * Availability restore: update the body data attributes in index.html.
+   * For the full layout, enable iOS/Hero/Feature/Final/Social, set Footer to
+   * "center", disable the compact Header CTA, and populate the unavailable
+   * SITE_LINKS values. The Hero dual-button swap then resumes automatically.
+   */
+  const SITE_AVAILABILITY = Object.freeze({
+    iosStoreAvailable: document.body.dataset.iosStoreAvailable !== "false",
+    showHeroStoreButtons: document.body.dataset.showHeroStoreButtons !== "false",
+    showFeatureStoreButtons: document.body.dataset.showFeatureStoreButtons !== "false",
+    showFinalStoreButtons: document.body.dataset.showFinalStoreButtons !== "false",
+    showSocialAccounts: document.body.dataset.showSocialAccounts !== "false",
+    showCompactHeaderGooglePlay: document.body.dataset.showCompactHeaderPlay !== "false"
   });
 
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -31,9 +40,17 @@
   routeLegacyFragment();
 
   document.querySelectorAll("[data-link]").forEach((element) => {
+    const isHeroStoreLink = Boolean(element.closest(".hero-store-badges"));
+    const isFeatureStoreLink = Boolean(element.closest(".features .store-badges"));
+    const isFinalStoreLink = Boolean(element.closest(".final-cta .store-badges"));
+    const isCompactHeaderPlay = element.classList.contains("header-play-cta");
     const temporarilyHidden =
-      (element.dataset.link === "appStore" && !SITE_FEATURES.showIosDownload) ||
-      ((element.dataset.link === "x" || element.dataset.link === "instagram") && !SITE_FEATURES.showSocialLinks);
+      (element.dataset.link === "appStore" && !SITE_AVAILABILITY.iosStoreAvailable) ||
+      (isHeroStoreLink && !SITE_AVAILABILITY.showHeroStoreButtons) ||
+      (isFeatureStoreLink && !SITE_AVAILABILITY.showFeatureStoreButtons) ||
+      (isFinalStoreLink && !SITE_AVAILABILITY.showFinalStoreButtons) ||
+      (isCompactHeaderPlay && !SITE_AVAILABILITY.showCompactHeaderGooglePlay) ||
+      ((element.dataset.link === "x" || element.dataset.link === "instagram") && !SITE_AVAILABILITY.showSocialAccounts);
     if (temporarilyHidden) {
       element.hidden = true;
       element.setAttribute("aria-hidden", "true");
@@ -60,7 +77,7 @@
     const subjects = [...hero.querySelectorAll("[data-subject-slide]")];
     const storeBadges = hero.querySelector(".hero-store-badges");
     const storeLinks = storeBadges ? [...storeBadges.querySelectorAll(".store-link:not([hidden])")] : [];
-    const shouldSwapStoreBadges = SITE_FEATURES.showIosDownload && storeLinks.length > 1;
+    const shouldSwapStoreBadges = SITE_AVAILABILITY.iosStoreAvailable && SITE_AVAILABILITY.showHeroStoreButtons && storeLinks.length > 1;
     const singleSubjectMedia = window.matchMedia("(max-width: 900px)");
     const hoverPauseMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
     const copyLeaveTimers = new WeakMap();

@@ -1349,13 +1349,12 @@ No actionable P0, P1, or P2 differences remain in the requested scope.
 
 final result: passed
 
-## Final release visibility and footer interaction QA — 2026-08-28
+## Final compact availability mode QA — 2026-08-28
 
-- Centralized temporary release switches live on the homepage `body`: `data-show-ios-download="false"` and `data-show-social-links="false"`.
-- All four App Store links remain in source but are hidden from layout and accessibility; all four Google Play CTAs remain visible and resolve to `https://play.google.com/store/apps/details?id=com.stormlift.app`.
-- The Hero store-badge swap is dormant while one store is visible; autoplay, side-subject selection, and Google Play hover-pause remain active.
-- Footer legal links reuse the Header underline transition (`180ms ease`) for hover and `:focus-visible`, while retaining the global keyboard outline.
-- Footer social markup and assets remain in source but the social group is temporarily hidden without disturbing the desktop three-column balance or mobile legal row.
-- Responsive browser QA passed at 1920, 1440, 1280, 1024, 768, 430, 390, 360, and 320px: zero horizontal overflow, four in-bounds Google Play CTAs, no feature CTA/art intersections, and in-bounds footer logo/legal navigation.
-- Functional browser QA passed for sticky Header anchors, Hero autoplay and subject controls, phone scroll motion/reversal, Workouts reveal, feature motion, FAQ expansion and stable FAQ/Benefits boundary, Benefits/Final CTA entrance, Footer legal navigation, legal pages, and legacy `#privacy`, `#terms`, and `#contact` routing.
-- Browser console reported no warnings/errors; all 37 homepage images completed with no broken resources.
+- The homepage `body` is the single availability/layout control surface. Current values are: `data-ios-store-available="false"`, `data-show-hero-store-buttons="false"`, `data-show-feature-store-buttons="false"`, `data-show-final-store-buttons="false"`, `data-show-social-accounts="false"`, `data-show-compact-header-play="true"`, and `data-footer-legal-layout="left"`.
+- The current prominent download action is the compact Header Google Play CTA. It resolves to `https://play.google.com/store/apps/details?id=com.stormlift.app`, uses safe external-link attributes, and is shown from 901px upward; the existing mobile Header hierarchy is preserved at 900px and below.
+- Hero and Feature store wrappers have no rendered box or pointer interception in the current mode. Their eight original links, dual-button geometry, vertical Hero swap selectors, hover-pause listeners, assets, and paired Feature layout remain in source.
+- Footer social markup/assets/configuration remain in source but hidden. The temporary Footer uses the approved gutter with logo and legal navigation left-composed; the Header-derived hover and `:focus-visible` underline plus keyboard outline remain active.
+- Full restore checklist: populate `SITE_LINKS.appStore`, `SITE_LINKS.x`, and `SITE_LINKS.instagram`; set the iOS/Hero/Feature/Final/Social body flags to `"true"`; set `data-footer-legal-layout="center"`; and set `data-show-compact-header-play="false"`. With iOS and Hero enabled, the dual-button Hero swap and CTA hover-pause resume automatically after reload.
+- Responsive browser QA passed at 1920, 1440, 1280, 1024, 768, 430, 390, 360, and 320px with unchanged Header heights, zero horizontal overflow, no Header/nav/CTA collision, and no Footer logo/legal collision.
+- Functional browser QA passed for sticky Header behavior, compact CTA URL/safe-link behavior, Hero autoplay and athlete selection without store controls, hidden Feature CTA spacing, Footer hover/focus, legal routes, and retained restoration markup.

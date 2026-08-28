@@ -50,11 +50,16 @@ button { font: inherit; }
 .site-nav a { position: relative; padding: 12px 2px; color: #e8e8e8; }
 .site-nav a::after { position: absolute; right: 0; bottom: 7px; left: 0; height: 1px; content: ""; transform: scaleX(0); transform-origin: center; background: #fff; transition: transform 180ms ease; }
 .site-nav a:hover::after, .site-nav a:focus-visible::after { transform: scaleX(1); }
+.header-download-area { justify-self: end; display: flex; align-items: center; gap: clamp(10px, .7292vw, 14px); }
 .header-download { justify-self: end; color: #b8dff0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
 
-/* Temporary release visibility. Restore by changing the matching body data attribute to "true". */
-.home-page[data-show-ios-download="false"] [data-link="appStore"],
-.home-page[data-show-social-links="false"] .social-links { display: none !important; }
+/* Temporary availability mode. The body data attributes are the only layout/visibility switches. */
+.home-page[data-ios-store-available="false"] [data-link="appStore"],
+.home-page[data-show-hero-store-buttons="false"] .hero-store-badges,
+.home-page[data-show-feature-store-buttons="false"] .features .store-badges,
+.home-page[data-show-final-store-buttons="false"] .final-cta .store-badges,
+.home-page[data-show-social-accounts="false"] .social-links,
+.home-page[data-show-compact-header-play="false"] .header-play-cta { display: none !important; pointer-events: none; }
 
 .home-page {
   --anchor-header-height: var(--header-height);
@@ -146,6 +151,18 @@ button { font: inherit; }
 .store-link:hover { transform: translateY(-2px); }
 .store-link[aria-disabled="true"], .social-links a[aria-disabled="true"] { cursor: default; }
 .store-link[aria-disabled="true"]:hover { transform: none; }
+.header-play-cta {
+  --header-play-art-width: clamp(82px, 5vw, 96px);
+  display: grid;
+  place-items: center;
+  overflow: visible;
+  padding: clamp(5px, .3125vw, 6px) clamp(10px, .625vw, 12px);
+  border: 2px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box, var(--rainbow) border-box;
+  box-shadow: 0 7px 18px rgba(115,211,238,.2), 0 4px 10px rgba(0,0,0,.18);
+}
+.header-play-cta:hover { transform: translateY(-1px); }
+.header-play-cta img { width: var(--header-play-art-width); height: auto; filter: none; }
 .hero-store-badges .store-link { position: absolute; top: 0; display: grid; place-items: center; width: var(--store-button-width); overflow: visible; padding: var(--store-pad-y) var(--store-pad-x); border: var(--store-border) solid transparent; background: linear-gradient(#fff,#fff) padding-box, var(--rainbow) border-box; box-shadow: 0 10px 25px rgba(115,211,238,.22), 0 5px 14px rgba(0,0,0,.16); transform: translateY(calc(var(--store-y) + var(--store-hover-y, 0px))); transition: transform 1.05s var(--ease-premium) 120ms, opacity 180ms ease; will-change: transform; }
 .hero-store-badges .store-link:first-child { left: 0; }
 .hero-store-badges .store-link:nth-child(2) { left: calc(var(--store-button-width) + var(--store-gap)); }
@@ -157,14 +174,6 @@ button { font: inherit; }
 .hero-store-badges.is-swapped .store-link:nth-child(2) { --store-y: 0px; }
 .hero-store-badges:not(.is-swapped) .store-link:nth-child(2),
 .hero-store-badges.is-swapped .store-link:first-child { --store-y: var(--store-stagger); }
-.home-page[data-show-ios-download="false"] .hero-store-badges {
-  width: var(--store-button-width);
-  height: var(--store-button-height);
-}
-.home-page[data-show-ios-download="false"] .hero-store-badges .store-link[data-link="playStore"] {
-  left: 0;
-  --store-y: 0px;
-}
 .hero-wordmark { position: absolute; right: 0; bottom: -1px; left: 0; width: 100%; max-width: none; height: auto; pointer-events: none; }
 .hero-wordmark--blur { z-index: 7; aspect-ratio: 1920 / 259; background: rgba(255,255,255,.58); -webkit-backdrop-filter: blur(8px) saturate(.92); backdrop-filter: blur(8px) saturate(.92); -webkit-mask: url("assets/hero-slider/stormlift.svg") center bottom / 100% 100% no-repeat; mask: url("assets/hero-slider/stormlift.svg") center bottom / 100% 100% no-repeat; }
 .hero-wordmark--front { z-index: 8; opacity: .52; filter: none; }
@@ -419,6 +428,8 @@ button { font: inherit; }
 .social-links a { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--rainbow); transition: transform 180ms ease; }
 .social-links a:hover { transform: translateY(-2px); }
 .social-links img { width: 16px; height: 16px; }
+.home-page[data-footer-legal-layout="left"] .site-footer { grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(38px, 3.125vw, 60px); }
+.home-page[data-footer-legal-layout="left"] .footer-nav { grid-column: 2; justify-self: start; }
 
 .motion-ready .reveal { opacity: 0; transform: translateY(28px) scale(.985); transition: opacity 720ms ease, transform 780ms var(--ease-premium); }
 .motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
@@ -533,8 +544,9 @@ button { font: inherit; }
     font-size: clamp(.95rem, 1.0417vw, 1.25rem);
   }
   .home-page .site-nav a { padding-inline: 0; }
+  .home-page .header-download-area { margin-left: auto; }
   .home-page .header-download {
-    margin-left: auto;
+    margin-left: 0;
     font-size: clamp(1rem, 1.015625vw, 1.21875rem);
     letter-spacing: .015em;
   }
@@ -902,6 +914,7 @@ button { font: inherit; }
   }
   .site-header { grid-template-columns: auto 1fr; padding: 0 24px; }
   .site-nav { justify-self: end; gap: 28px; }
+  .header-download-area { display: none; }
   .header-download { display: none; }
   .hero-slider { height: calc(100vh - var(--header-height)); height: clamp(650px, calc(100dvh - var(--header-height)), 850px); touch-action: pan-y; }
   .hero-stage { --copy-top: 48px; --store-top: auto; --store-left: auto; }
@@ -1039,6 +1052,8 @@ button { font: inherit; }
   .footer-brand img { width: 105px; }
   .footer-nav { grid-column: 1 / -1; grid-row: 2; justify-content: center; order: 3; font-size: .75rem; }
   .social-links { grid-column: 2; grid-row: 1; }
+  .home-page[data-footer-legal-layout="left"] .site-footer { grid-template-columns: 1fr; align-content: center; row-gap: 8px; }
+  .home-page[data-footer-legal-layout="left"] .footer-nav { grid-column: 1; grid-row: 2; justify-self: start; justify-content: flex-start; }
   .legal-main { width: min(100% - 32px, 900px); padding: 72px 0 100px; }
   .legal-hero { margin-bottom: 54px; }
   .legal-content h2 { margin-top: 50px; padding-top: 28px; }
