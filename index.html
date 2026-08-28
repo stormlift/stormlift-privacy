@@ -27,10 +27,11 @@
     <meta name="twitter:description" content="Build, generate, import and track your workouts with StormLift. Free, with no ads or subscriptions.">
     <link rel="preload" href="assets/fonts/outfit-regular.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="assets/hero-slider/hero-man-dumbbells.png" as="image">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=release-ready-1">
+    <script src="script.js?v=release-ready-1" defer></script>
   </head>
-  <body class="home-page">
+  <!-- Temporary release flags: set either value to "true" when the iOS listing or social accounts are ready. -->
+  <body class="home-page" data-show-ios-download="false" data-show-social-links="false">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <a class="brand-mark" href="#top" aria-label="StormLift home"><img src="assets/header/logo.svg" width="48" height="65" alt=""></a>
@@ -48,17 +49,30 @@
             <div class="hero-copy__item" data-copy="1" aria-hidden="true"><h2>Import a workout,<br><span>or generate new ones.</span></h2></div>
             <div class="hero-copy__item" data-copy="2" aria-hidden="true"><h2>No pay-walls,<br><span>just you training.</span></h2></div>
           </div>
-          <div class="hero-band hero-band--strength" aria-hidden="true"></div>
-          <div class="hero-band hero-band--coach" aria-hidden="true"></div>
-          <div class="hero-band hero-band--focus" aria-hidden="true"></div>
-          <img class="hero-person hero-person--strength" src="assets/hero-slider/hero-man-dumbbells.png" width="850" height="878" alt="">
-          <img class="hero-person hero-person--coach" src="assets/hero-slider/hero-woman.png" width="588" height="882" alt="">
-          <img class="hero-person hero-person--focus" src="assets/hero-slider/hero-man-phones.png" width="638" height="874" alt="">
+          <div class="hero-gradient hero-gradient--strength" aria-hidden="true">
+            <span class="hero-gradient__main"></span><span class="hero-gradient__strip"></span>
+          </div>
+          <div class="hero-gradient hero-gradient--coach" aria-hidden="true">
+            <span class="hero-gradient__main"></span><span class="hero-gradient__strip"></span>
+          </div>
+          <div class="hero-gradient hero-gradient--focus" aria-hidden="true">
+            <span class="hero-gradient__main"></span><span class="hero-gradient__strip"></span>
+          </div>
+          <span class="hero-wordmark hero-wordmark--blur" aria-hidden="true"></span>
+          <button type="button" class="hero-person hero-person--strength" data-subject-slide="0" aria-label="Show dumbbell workout slide" aria-current="true" disabled tabindex="-1">
+            <img src="assets/hero-slider/hero-man-dumbbells.png" width="850" height="878" alt="">
+          </button>
+          <button type="button" class="hero-person hero-person--coach" data-subject-slide="1" aria-label="Show woman slide">
+            <img src="assets/hero-slider/hero-woman.png" width="588" height="882" alt="">
+          </button>
+          <button type="button" class="hero-person hero-person--focus" data-subject-slide="2" aria-label="Show phone tracking slide">
+            <img src="assets/hero-slider/hero-man-phones.png" width="638" height="874" alt="">
+          </button>
           <div class="store-badges hero-store-badges" aria-label="Get StormLift">
             <a class="store-link" data-link="appStore" aria-label="Download StormLift on the App Store"><img src="assets/hero-slider/app-store-logo.png" width="151" height="43" alt="Download on the App Store"></a>
             <a class="store-link" data-link="playStore" aria-label="Get StormLift on Google Play"><img src="assets/hero-slider/play-store-logo.png" width="155" height="45" alt="Get it on Google Play"></a>
           </div>
-          <img class="hero-wordmark" src="assets/hero-slider/stormlift.svg" width="1920" height="259" alt="StormLift">
+          <img class="hero-wordmark hero-wordmark--front" src="assets/hero-slider/stormlift.svg" width="1920" height="259" alt="StormLift">
           <div class="hero-controls" role="group" aria-label="Choose hero slide">
             <button type="button" class="hero-control is-active" data-slide-control="0" aria-label="Show Train smarter" aria-pressed="true"></button>
             <button type="button" class="hero-control" data-slide-control="1" aria-label="Show Import or generate" aria-pressed="false"></button>
@@ -70,40 +84,52 @@
       <section class="app-showcase section-shell" id="app" aria-labelledby="app-title">
         <h2 class="visually-hidden" id="app-title">The StormLift app</h2>
         <div class="phone-composition" data-scroll-motion>
-          <span class="phone-glow phone-glow--one" aria-hidden="true"></span><span class="phone-glow phone-glow--two" aria-hidden="true"></span><span class="phone-glow phone-glow--three" aria-hidden="true"></span><span class="phone-glow phone-glow--four" aria-hidden="true"></span>
-          <img class="phone phone--left" src="assets/app-phones/phone-left.png" width="373" height="742" alt="StormLift progress screen showing workout and body metrics">
-          <img class="phone phone--center" src="assets/app-phones/phone-center.png" width="434" height="864" alt="StormLift adaptive workouts screen">
-          <img class="phone phone--right" src="assets/app-phones/phone-right.png" width="373" height="742" alt="StormLift profile screen">
+          <div class="phone-unit phone-unit--left" data-phone="left">
+            <img class="phone phone--left" src="assets/app-phones/phone-left.png" width="373" height="742" alt="StormLift progress screen showing workout and body metrics">
+            <span class="phone-pill phone-pill--warm phone-pill--left-top" data-enter-x="-9" data-enter-y="8" aria-hidden="true"><span class="phone-pill__surface"></span></span>
+            <span class="phone-pill phone-pill--warm phone-pill--left-bottom" data-enter-x="9" data-enter-y="7" aria-hidden="true"><span class="phone-pill__surface"></span></span>
+          </div>
+          <div class="phone-unit phone-unit--center" data-phone="center">
+            <img class="phone phone--center" src="assets/app-phones/phone-center.png" width="434" height="864" alt="StormLift adaptive workouts screen">
+            <span class="phone-pill phone-pill--focus phone-pill--center-top" data-enter-x="-8" data-enter-y="8" aria-hidden="true"><span class="phone-pill__surface"></span></span>
+            <span class="phone-pill phone-pill--focus phone-pill--center-middle" data-enter-x="9" data-enter-y="7" aria-hidden="true"><span class="phone-pill__surface"></span></span>
+            <span class="phone-pill phone-pill--focus phone-pill--center-bottom" data-enter-x="-8" data-enter-y="7" aria-hidden="true"><span class="phone-pill__surface"></span></span>
+          </div>
+          <div class="phone-unit phone-unit--right" data-phone="right">
+            <img class="phone phone--right" src="assets/app-phones/phone-right.png" width="373" height="742" alt="StormLift profile screen">
+            <span class="phone-pill phone-pill--coach phone-pill--right-top" data-enter-x="9" data-enter-y="8" aria-hidden="true"><span class="phone-pill__surface"></span></span>
+            <span class="phone-pill phone-pill--coach phone-pill--right-bottom" data-enter-x="-9" data-enter-y="7" aria-hidden="true"><span class="phone-pill__surface"></span></span>
+          </div>
         </div>
       </section>
 
-      <section class="workouts section-shell" id="workouts" aria-labelledby="workouts-title">
-        <div class="section-intro reveal"><h2 class="gradient-heading gradient-heading--blue" id="workouts-title">Workouts</h2><p>Generate different workouts in seconds, import your own or create custom ones.</p></div>
+      <section class="workouts section-shell content-container" id="workouts" aria-labelledby="workouts-title" data-workouts-reveal>
+        <div class="section-intro"><h2 class="gradient-heading gradient-heading--blue" id="workouts-title">Workouts</h2><p>Generate different workouts in seconds, import your own or create custom ones.</p></div>
         <div class="workout-grid">
-          <article class="workout-card workout-card--quick reveal"><div><h3>Quick Workout</h3><p>Train as long as<br>you want!</p></div><img src="assets/workouts/quick-workout.png" width="184" height="248" alt="" loading="lazy"><span class="workout-glow" aria-hidden="true"></span></article>
-          <article class="workout-card workout-card--journey reveal"><div><h3>Workout Journey</h3><p>Adaptive plan for<br>long term progress</p></div><img src="assets/workouts/workout-journey.png" width="232" height="248" alt="" loading="lazy"><span class="workout-glow" aria-hidden="true"></span></article>
-          <article class="workout-card workout-card--travel reveal"><div><h3>Home &amp; Travel</h3><p>Train anywhere with<br>minimal equipment</p></div><img src="assets/workouts/home-and-travel.png" width="190" height="284" alt="" loading="lazy"><span class="workout-glow" aria-hidden="true"></span></article>
-          <article class="workout-card workout-card--import reveal"><div><h3>Import Workout</h3><p>Bring your own workout,<br>Excel, JSON or CSV files</p></div><img src="assets/workouts/import-workout.png" width="182" height="248" alt="" loading="lazy"><span class="workout-glow" aria-hidden="true"></span></article>
-          <article class="workout-card workout-card--custom reveal"><div><h3>Custom Workout</h3><p>Build your own Workout,<br>full control, step by step</p></div><img src="assets/workouts/custom-workout.png" width="165" height="248" alt="" loading="lazy"><span class="workout-glow" aria-hidden="true"></span></article>
+          <article class="workout-card workout-card--quick"><div><h3>Quick Workout</h3><p>Train freely with flexible sessions that fit your day.</p></div><img src="assets/workouts/quick-workout.png" width="184" height="248" alt="" loading="lazy"><span class="workout-glow workout-glow--top" aria-hidden="true"></span><span class="workout-glow workout-glow--bottom" aria-hidden="true"></span></article>
+          <article class="workout-card workout-card--journey"><div><h3>Workout Journey</h3><p>Follow an adaptive plan built for steady long-term progress.</p></div><img src="assets/workouts/workout-journey.png" width="232" height="248" alt="" loading="lazy"><span class="workout-glow workout-glow--top" aria-hidden="true"></span><span class="workout-glow workout-glow--bottom" aria-hidden="true"></span></article>
+          <article class="workout-card workout-card--travel"><div><h3>Home &amp; Travel</h3><p>Train anywhere with simple workouts and minimal equipment needed.</p></div><img src="assets/workouts/home-and-travel.png" width="190" height="284" alt="" loading="lazy"><span class="workout-glow workout-glow--top" aria-hidden="true"></span><span class="workout-glow workout-glow--bottom" aria-hidden="true"></span></article>
+          <article class="workout-card workout-card--import"><div><h3>Import Workout</h3><p>Bring your existing workout from Excel, JSON or CSV.</p></div><img src="assets/workouts/import-workout.png" width="182" height="248" alt="" loading="lazy"><span class="workout-glow workout-glow--top" aria-hidden="true"></span><span class="workout-glow workout-glow--bottom" aria-hidden="true"></span></article>
+          <article class="workout-card workout-card--custom"><div><h3>Custom Workout</h3><p>Build your own workout with full control, step-by-step planning.</p></div><img src="assets/workouts/custom-workout.png" width="165" height="248" alt="" loading="lazy"><span class="workout-glow workout-glow--top" aria-hidden="true"></span><span class="workout-glow workout-glow--bottom" aria-hidden="true"></span></article>
         </div>
       </section>
 
-      <section class="features section-shell" aria-label="StormLift features">
+      <section class="features section-shell content-container" aria-label="StormLift features">
         <article class="feature feature--focus" id="focus" data-scroll-motion>
           <div class="feature-copy"><h2 class="gradient-heading gradient-heading--blue">Focus</h2><p>Train with a plan that makes sense.</p><p>Build your own workouts or generate structured sessions based on your goals, workout split and preferences.</p><div class="store-badges store-badges--small" aria-label="Get StormLift"><a class="store-link" data-link="appStore" aria-label="Download StormLift on the App Store"><img src="assets/hero-slider/app-store-logo.png" width="151" height="43" alt="Download on the App Store" loading="lazy"></a><a class="store-link" data-link="playStore" aria-label="Get StormLift on Google Play"><img src="assets/hero-slider/play-store-logo.png" width="155" height="45" alt="Get it on Google Play" loading="lazy"></a></div></div>
-          <div class="feature-art feature-art--focus"><span class="feature-shape feature-shape--back" aria-hidden="true"></span><span class="feature-shape feature-shape--front" aria-hidden="true"></span><span class="feature-orb feature-orb--one" aria-hidden="true"></span><span class="feature-orb feature-orb--two" aria-hidden="true"></span><img src="assets/hero-slider/hero-man-phones.png" width="638" height="874" alt="Athlete reviewing a workout on his phone" loading="lazy"></div>
+          <div class="feature-art feature-art--focus"><span class="feature-shape feature-shape--back" aria-hidden="true"></span><span class="feature-shape feature-shape--front" aria-hidden="true"></span><span class="feature-orb feature-orb--one" data-motion-side="right" aria-hidden="true"></span><span class="feature-orb feature-orb--two" data-motion-side="left" aria-hidden="true"></span><img src="assets/hero-slider/hero-man-phones.png" width="638" height="874" alt="Athlete reviewing a workout on his phone" loading="lazy"></div>
         </article>
         <article class="feature feature--track feature--reverse" id="track" data-scroll-motion>
           <div class="feature-copy"><h2 class="gradient-heading gradient-heading--warm">Track</h2><p>Every set. Every session. Your progress.</p><p>Track weights, reps and completed workouts while StormLift keeps your training history organised.</p><div class="store-badges store-badges--small" aria-label="Get StormLift"><a class="store-link" data-link="appStore" aria-label="Download StormLift on the App Store"><img src="assets/hero-slider/app-store-logo.png" width="151" height="43" alt="Download on the App Store" loading="lazy"></a><a class="store-link" data-link="playStore" aria-label="Get StormLift on Google Play"><img src="assets/hero-slider/play-store-logo.png" width="155" height="45" alt="Get it on Google Play" loading="lazy"></a></div></div>
-          <div class="feature-art feature-art--track"><span class="feature-shape feature-shape--back" aria-hidden="true"></span><span class="feature-shape feature-shape--front" aria-hidden="true"></span><span class="feature-orb feature-orb--one" aria-hidden="true"></span><span class="feature-orb feature-orb--two" aria-hidden="true"></span><img src="assets/hero-slider/hero-man-dumbbells.png" width="850" height="878" alt="Athlete tracking a dumbbell workout" loading="lazy"></div>
+          <div class="feature-art feature-art--track"><span class="feature-shape feature-shape--back" aria-hidden="true"></span><span class="feature-shape feature-shape--front" aria-hidden="true"></span><span class="feature-orb feature-orb--one" data-motion-side="left" aria-hidden="true"></span><span class="feature-orb feature-orb--two" data-motion-side="right" aria-hidden="true"></span><img src="assets/hero-slider/hero-man-dumbbells.png" width="850" height="878" alt="Athlete tracking a dumbbell workout" loading="lazy"></div>
         </article>
         <article class="feature feature--coach" id="adaptive-coach" data-scroll-motion>
           <div class="feature-copy"><h2 class="gradient-heading gradient-heading--green">Adaptive Coach</h2><p>Guidance that responds to your training.</p><p>Get workout suggestions based on your training and preferences, helping you decide what to train next.</p><div class="store-badges store-badges--small" aria-label="Get StormLift"><a class="store-link" data-link="appStore" aria-label="Download StormLift on the App Store"><img src="assets/hero-slider/app-store-logo.png" width="151" height="43" alt="Download on the App Store" loading="lazy"></a><a class="store-link" data-link="playStore" aria-label="Get StormLift on Google Play"><img src="assets/hero-slider/play-store-logo.png" width="155" height="45" alt="Get it on Google Play" loading="lazy"></a></div></div>
-          <div class="feature-art feature-art--coach"><span class="feature-shape feature-shape--back" aria-hidden="true"></span><span class="feature-shape feature-shape--front" aria-hidden="true"></span><span class="feature-orb feature-orb--one" aria-hidden="true"></span><span class="feature-orb feature-orb--two" aria-hidden="true"></span><img src="assets/hero-slider/hero-woman.png" width="588" height="882" alt="Athlete following an adaptive dumbbell workout" loading="lazy"></div>
+          <div class="feature-art feature-art--coach"><span class="feature-shape feature-shape--back" aria-hidden="true"></span><span class="feature-shape feature-shape--front" aria-hidden="true"></span><span class="feature-orb feature-orb--one" data-motion-side="left" aria-hidden="true"></span><span class="feature-orb feature-orb--two" data-motion-side="right" aria-hidden="true"></span><img src="assets/hero-slider/hero-woman.png" width="588" height="882" alt="Athlete following an adaptive dumbbell workout" loading="lazy"></div>
         </article>
       </section>
 
-      <section class="faq-section section-shell" id="faqs" aria-labelledby="faq-title">
+      <section class="faq-section section-shell content-container" id="faqs" aria-labelledby="faq-title">
         <h2 id="faq-title" class="reveal">FAQs</h2>
         <div class="faq-accordion">
           <section class="faq-category reveal"><h3><button class="faq-toggle" type="button" aria-expanded="true" aria-controls="faq-general"><span>General</span><img src="assets/faqs/minus.svg" width="15" height="15" alt=""></button></h3><div class="faq-panel" id="faq-general"><div class="faq-grid"><article class="faq-card faq-card--warm"><h4>What is StormLift?</h4><p>A free fitness app to build, generate, import and track your workouts.</p></article><article class="faq-card faq-card--green"><h4>Is StormLift free?</h4><p>Yes. StormLift is free, with no subscriptions, in-app purchases or ads.</p></article><article class="faq-card faq-card--blue"><h4>Who is StormLift for?</h4><p>Anyone who wants a flexible way to organise and track their training.</p></article></div></div></section>
@@ -113,17 +139,24 @@
         </div>
       </section>
 
-      <section class="benefits" id="benefits" aria-label="StormLift benefits"><div class="benefits-grid section-shell">
-        <article class="benefit reveal"><img src="assets/icons/100-free.svg" width="105" height="107" alt="" loading="lazy"><h2>100% Free</h2><p>No paywalls.<br>No subscriptions. No ads.</p></article>
-        <article class="benefit reveal"><img src="assets/icons/no-ads.svg" width="101" height="107" alt="" loading="lazy"><h2>No Ads</h2><p>A distraction-free<br>training experience.</p></article>
-        <article class="benefit reveal"><img src="assets/icons/no-subs.svg" width="107" height="107" alt="" loading="lazy"><h2>No Subs</h2><p>Never pay to<br>access your training.</p></article>
-        <article class="benefit reveal"><img src="assets/icons/your-data.svg" width="101" height="107" alt="" loading="lazy"><h2>Your Data</h2><p>Manage your data<br>directly from the app.</p></article>
+      <section class="benefits" id="benefits" aria-label="StormLift benefits" data-benefits-reveal><div class="benefits-grid section-shell">
+        <article class="benefit"><img src="assets/icons/100-free.svg" width="105" height="107" alt="" loading="lazy"><h2>100% Free</h2><p>No paywalls.<br>No subscriptions. No ads.</p></article>
+        <article class="benefit"><img src="assets/icons/no-ads.svg" width="101" height="107" alt="" loading="lazy"><h2>No Ads</h2><p>A distraction-free<br>training experience.</p></article>
+        <article class="benefit"><img src="assets/icons/no-subs.svg" width="107" height="107" alt="" loading="lazy"><h2>No Subs</h2><p>Never pay to<br>access your training.</p></article>
+        <article class="benefit"><img src="assets/icons/your-data.svg" width="101" height="107" alt="" loading="lazy"><h2>Your Data</h2><p>Manage your data<br>directly from the app.</p></article>
       </div></section>
 
-      <section class="final-cta" id="download" aria-labelledby="cta-title"><div class="final-cta__content section-shell reveal"><div class="final-cta__copy"><h2 id="cta-title">Ready to train your way?</h2><p>Build it. Generate it. Track it.</p></div><div class="final-cta__phones" aria-hidden="true"><img class="final-phone final-phone--small" src="assets/final-cta/phone-small-left.png" width="257" height="315" alt="" loading="lazy"><img class="final-phone final-phone--big" src="assets/final-cta/phone-big-right.png" width="318" height="389" alt="" loading="lazy"></div></div></section>
+      <section class="final-cta" id="download" aria-labelledby="cta-title" data-cta-reveal>
+        <div class="final-cta__backdrop" aria-hidden="true">
+          <div class="final-cta-gradient final-cta-gradient--focus"><span class="final-cta-gradient__main"></span><span class="final-cta-gradient__strip"></span></div>
+          <div class="final-cta-gradient final-cta-gradient--strength"><span class="final-cta-gradient__main"></span><span class="final-cta-gradient__strip"></span></div>
+          <div class="final-cta-gradient final-cta-gradient--coach"><span class="final-cta-gradient__main"></span><span class="final-cta-gradient__strip"></span></div>
+        </div>
+        <div class="final-cta__content section-shell content-container"><div class="final-cta__copy"><h2 id="cta-title">Ready to train your way?</h2><p>Build it. Generate it. Track it.</p></div><div class="final-cta__phones" aria-hidden="true"><img class="final-phone final-phone--small" src="assets/final-cta/phone-small-left.png" width="257" height="315" alt="" loading="lazy"><img class="final-phone final-phone--big" src="assets/final-cta/phone-big-right.png" width="318" height="389" alt="" loading="lazy"></div></div>
+      </section>
     </main>
 
-    <footer class="site-footer reveal">
+    <footer class="site-footer" data-footer-reveal>
       <a class="footer-brand" href="#top" aria-label="StormLift home"><img src="assets/footer/logo-footer.svg" width="168" height="46" alt="StormLift" loading="lazy"></a>
       <nav class="footer-nav" aria-label="Legal navigation"><a href="terms/">Terms &amp; Conditions</a><span aria-hidden="true">•</span><a href="privacy/">Privacy Policy</a></nav>
       <div class="social-links" aria-label="StormLift social media"><a data-link="x" aria-label="StormLift on X"><img src="assets/footer/logo-x.svg" width="22" height="22" alt=""></a><a data-link="instagram" aria-label="StormLift on Instagram"><img src="assets/footer/logo-instagram.svg" width="26" height="26" alt=""></a></div>
