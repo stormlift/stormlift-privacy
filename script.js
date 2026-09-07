@@ -39,6 +39,48 @@
   window.addEventListener("hashchange", routeLegacyFragment);
   routeLegacyFragment();
 
+  const homepageSectionHashes = new Set(["#top", "#app", "#workouts", "#faqs"]);
+  const isHomepage = document.body.classList.contains("home-page");
+  const cleanHomepageHash = () => {
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `${window.location.pathname}${window.location.search}`
+    );
+  };
+  const scrollToHomepageSection = (hash, behavior) => {
+    const target = document.querySelector(hash);
+    if (!target) return false;
+    target.scrollIntoView({ behavior, block: "start" });
+    cleanHomepageHash();
+    return true;
+  };
+
+  if (isHomepage) {
+    document.addEventListener("click", (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest("a[href]");
+      if (!link || link.target || link.hasAttribute("download")) return;
+      const hash = link.getAttribute("href");
+      if (!homepageSectionHashes.has(hash)) return;
+      event.preventDefault();
+      scrollToHomepageSection(hash, reduceMotion ? "auto" : "smooth");
+    });
+
+    const resolveInitialHomepageHash = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (!homepageSectionHashes.has(hash)) return;
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          scrollToHomepageSection(hash, reduceMotion ? "auto" : "smooth");
+        });
+      });
+    };
+
+    if (document.readyState === "complete") resolveInitialHomepageHash();
+    else window.addEventListener("load", resolveInitialHomepageHash, { once: true });
+  }
+
   document.querySelectorAll("[data-link]").forEach((element) => {
     const isHeroStoreLink = Boolean(element.closest(".hero-store-badges"));
     const isFeatureStoreLink = Boolean(element.closest(".features .store-badges"));
