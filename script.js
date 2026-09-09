@@ -136,6 +136,11 @@
         picture.removeAttribute("data-deferred-hero");
       });
     };
+    const hydrateDeferredHeroAfterPaint = () => {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(hydrateDeferredHero);
+      });
+    };
     const copies = [...hero.querySelectorAll("[data-copy]")];
     const controls = [...hero.querySelectorAll("[data-slide-control]")];
     const subjects = [...hero.querySelectorAll("[data-subject-slide]")];
@@ -297,8 +302,8 @@
     renderSlide(0);
     startAutoplay();
     if (singleSubjectMedia.matches) {
-      if (document.readyState === "complete") hydrateDeferredHero();
-      else window.addEventListener("load", hydrateDeferredHero, { once: true });
+      if (document.readyState === "complete") hydrateDeferredHeroAfterPaint();
+      else window.addEventListener("load", hydrateDeferredHeroAfterPaint, { once: true });
     } else {
       hydrateDeferredHero();
     }
