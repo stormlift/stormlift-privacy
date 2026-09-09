@@ -99,6 +99,11 @@
       return;
     }
 
+    element.querySelectorAll("img[data-src]").forEach((image) => {
+      image.src = image.dataset.src;
+      image.removeAttribute("data-src");
+    });
+
     const destination = SITE_LINKS[element.dataset.link];
     if (destination) {
       element.href = destination;
@@ -114,6 +119,23 @@
 
   const hero = document.querySelector(".hero-slider");
   if (hero) {
+    const hydrateDeferredHero = () => {
+      hero.querySelectorAll("[data-deferred-hero]").forEach((picture) => {
+        const source = picture.querySelector("source[data-srcset]");
+        const image = picture.querySelector("img[data-src]");
+        if (source) {
+          source.srcset = source.dataset.srcset;
+          source.sizes = source.dataset.sizes;
+          source.removeAttribute("data-srcset");
+          source.removeAttribute("data-sizes");
+        }
+        if (image) {
+          image.src = image.dataset.src;
+          image.removeAttribute("data-src");
+        }
+        picture.removeAttribute("data-deferred-hero");
+      });
+    };
     const copies = [...hero.querySelectorAll("[data-copy]")];
     const controls = [...hero.querySelectorAll("[data-slide-control]")];
     const subjects = [...hero.querySelectorAll("[data-subject-slide]")];
@@ -257,6 +279,7 @@
 
     if (typeof singleSubjectMedia.addEventListener === "function") {
       singleSubjectMedia.addEventListener("change", () => {
+        if (!singleSubjectMedia.matches) hydrateDeferredHero();
         updateSubjectControls();
         syncSubjectAutoplayPauses();
       });
@@ -273,6 +296,12 @@
 
     renderSlide(0);
     startAutoplay();
+    if (singleSubjectMedia.matches) {
+      if (document.readyState === "complete") hydrateDeferredHero();
+      else window.addEventListener("load", hydrateDeferredHero, { once: true });
+    } else {
+      hydrateDeferredHero();
+    }
   }
 
   const revealElements = [...document.querySelectorAll(".reveal")];
