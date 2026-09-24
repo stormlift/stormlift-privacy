@@ -413,6 +413,7 @@ button { font: inherit; }
 .final-cta__copy { position: relative; z-index: 2; padding-left: 30px; }
 .final-cta h2 { margin: 0; font-size: clamp(2rem, 3.2vw, 3.8rem); font-weight: 800; letter-spacing: -0.04em; line-height: .98; text-transform: uppercase; }
 .final-cta p { margin: 16px 0 0; font-size: clamp(1.2rem, 1.8vw, 1.75rem); font-weight: 500; }
+.home-page .final-cta .store-badges { flex-wrap: wrap; margin-top: 24px; }
 .final-cta__phones { position: absolute; right: 7%; bottom: -18px; width: 430px; height: 100%; }
 .final-phone { position: absolute; bottom: 0; width: auto; }
 .final-phone--small { left: 28px; z-index: 1; width: 200px; height: auto; }
@@ -806,7 +807,7 @@ button { font: inherit; }
     --final-cta-content-gutter: 118px;
     width: min(calc(100% - (var(--final-cta-content-gutter) * 2)), var(--content-max-width));
   }
-  .home-page .final-cta__copy { padding-left: 0; }
+  .home-page .final-cta__copy { max-width: calc(100% - 430px); padding-left: 0; }
   .home-page .final-cta h2 { font-size: clamp(3rem, 3.2292vw, 3.875rem); }
   .home-page .final-cta p { margin-top: 18px; font-size: clamp(1.45rem, 2.0833vw, 2.5rem); }
   .home-page .final-cta__phones { right: 0; bottom: -18px; width: 430px; height: 100%; }
@@ -1042,8 +1043,8 @@ button { font: inherit; }
   .benefit img { width: 72px; height: 76px; margin-bottom: 20px; }
   .benefit h2 { font-size: 1.05rem; }
   .benefit p { font-size: .83rem; }
-  .final-cta { height: 410px; }
-  .final-cta__content { align-items: flex-start; padding-top: 48px; }
+  .final-cta { height: auto; min-height: 410px; }
+  .final-cta__content { align-items: flex-start; height: auto; min-height: 410px; padding-block: 40px 240px; }
   .final-cta__copy { width: 100%; padding-left: 0; }
   .final-cta h2 { max-width: 340px; font-size: clamp(2rem, 10vw, 3rem); }
   .final-cta p { margin-top: 10px; font-size: 1.15rem; }
