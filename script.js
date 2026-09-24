@@ -3,7 +3,7 @@
 
   const SITE_LINKS = Object.freeze({
     playStore: "https://play.google.com/store/apps/details?id=com.stormlift.app",
-    appStore: "",
+    appStore: "https://apps.apple.com/nl/app/stormlift-workout-planner/id6810160175?l=en-GB",
     instagram: "",
     x: ""
   });
