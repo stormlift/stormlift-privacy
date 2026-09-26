@@ -967,7 +967,7 @@ button { font: inherit; }
   .home-page {
     --app-anchor-content-offset: 125px;
     --workouts-anchor-content-offset: 90px;
-    --faq-anchor-content-offset: 110px;
+    --faq-anchor-content-offset: 60px;
   }
   .section-shell { width: min(100% - 36px, 560px); }
   .site-header { padding: 0 16px; }
@@ -979,13 +979,15 @@ button { font: inherit; }
   .hero-slider { height: calc(100vh - var(--header-height)); height: clamp(620px, calc(100dvh - var(--header-height)), 820px); }
   .hero-copy { top: 38px; left: 20px; width: calc(100% - 40px); }
   .hero-copy h1, .hero-copy h2 { font-size: clamp(2rem, 10vw, 3.15rem); }
-  .hero-store-badges { bottom: 120px; left: 18px; --store-art-width: 116px; --store-image-width: 106px; }
+  .hero-store-badges { bottom: 120px; left: 18px; width: calc(100% - 36px); height: auto; flex-direction: column; gap: var(--store-gap); --store-art-width: 116px; --store-image-width: 106px; --store-stagger: 0px; }
+  .hero-store-badges .store-link:first-child,
+  .hero-store-badges .store-link:nth-child(2) { position: relative; left: auto; }
   .hero-slider[data-slide="0"] .hero-person--strength { width: min(530px, 115vw); }
   .hero-slider[data-slide="1"] .hero-person--coach { width: min(390px, 88vw); }
   .hero-slider[data-slide="2"] .hero-person--focus { width: min(410px, 94vw); }
-  .hero-wordmark { bottom: 0; width: 180%; transform: translateX(-25%); }
+  .hero-wordmark { bottom: 0; width: 100%; transform: none; }
   .app-showcase { min-height: 690px; padding: 125px 0 80px; }
-  .phone-composition { height: 460px; }
+  .phone-composition { width: min(calc(100% - 36px), 504px); height: min(420px, 105vw); }
   .phone-unit--left { left: 0; height: 68.4%; }
   .phone-unit--right { right: 0; height: 68.4%; }
   .phone-unit--center { height: 88.4%; }
@@ -994,16 +996,16 @@ button { font: inherit; }
   .gradient-heading { font-size: clamp(2.7rem, 13vw, 4rem); }
   .section-intro p { max-width: 330px; margin-inline: auto; font-size: .95rem; }
   .workouts .section-intro p { color: #FFFFFF; font-size: 1.02rem; }
-  .workout-grid { grid-template-columns: 1fr; gap: 24px; margin-top: 64px; }
+  .workout-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 64px; }
   .workout-card, .workout-card:last-child { grid-column: auto; width: 100%; height: 185px; justify-self: stretch; padding: 28px 24px; border-radius: 28px; }
-  .workout-card img { bottom: 0; height: 205px; }
-  .workout-card--quick img { right: 10px; height: 205px; }
-  .workout-card--journey img { right: -4px; height: 205px; }
-  .workout-card--travel img { right: 8px; height: 225px; }
-  .workout-card--import img { right: 8px; height: 205px; }
-  .workout-card--custom img { right: 12px; height: 210px; }
-  .features { padding-bottom: 90px; }
-  .feature, .feature--reverse { display: flex; flex-direction: column; min-height: auto; gap: 50px; padding: 70px 0 110px; }
+  .workout-card img { bottom: 0; height: 185px; }
+  .workout-card--quick img { right: 10px; height: 185px; }
+  .workout-card--journey img { right: -4px; height: 185px; }
+  .workout-card--travel img { right: 8px; height: 205px; }
+  .workout-card--import img { right: 8px; height: 185px; }
+  .workout-card--custom img { right: 12px; height: 190px; }
+  .features { padding-bottom: 30px; }
+  .feature, .feature--reverse { display: flex; flex-direction: column; min-height: auto; gap: 50px; padding: 40px 0 50px; }
   .feature + .feature { margin-top: 20px; }
   .feature--reverse .feature-copy, .feature--reverse .feature-art { grid-column: auto; grid-row: auto; }
   .feature--reverse .feature-copy { order: 1; }
@@ -1034,7 +1036,7 @@ button { font: inherit; }
   .feature-art--coach .feature-orb--one { top: 15%; right: auto; left: 8px; }
   .feature-art--track .feature-orb--two,
   .feature-art--coach .feature-orb--two { right: 8px; bottom: 10%; left: auto; }
-  .faq-section { padding: 110px 0 60px; }
+  .faq-section { padding: 60px 0 60px; }
   .faq-section > h2 { margin-bottom: 32px; }
   .faq-category + .faq-category { margin-top: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 15px; }
@@ -1048,15 +1050,17 @@ button { font: inherit; }
   .final-cta__copy { width: 100%; padding-left: 0; }
   .final-cta h2 { max-width: 340px; font-size: clamp(2rem, 10vw, 3rem); }
   .final-cta p { margin-top: 10px; font-size: 1.15rem; }
-  .final-cta__phones { right: -48px; bottom: -22px; width: 315px; height: 64%; }
-  .final-phone--small { left: 18px; width: 145px; }
-  .final-phone--big { width: 180px; }
+  .final-cta__phones { right: 0; bottom: 0; left: 0; width: min(100%, 280px); height: 64%; margin-inline: auto; }
+  .final-phone--small { left: 0; width: 48.8%; }
+  .final-phone--big { width: 60.6%; }
   .site-footer { grid-template-columns: 1fr auto; min-height: 176px; padding: 30px 20px; }
   .footer-brand img { width: 105px; }
   .footer-nav { grid-column: 1 / -1; grid-row: 2; justify-content: center; order: 3; font-size: .75rem; }
   .social-links { grid-column: 2; grid-row: 1; }
   .site-shell-page[data-footer-legal-layout="right"] .site-footer { grid-template-columns: 1fr; align-content: center; row-gap: 8px; }
   .site-shell-page[data-footer-legal-layout="right"] .footer-nav { grid-column: 1; grid-row: 2; justify-self: end; justify-content: flex-end; }
+  .home-page .footer-brand { justify-self: center; }
+  .home-page[data-footer-legal-layout="right"] .footer-nav { justify-self: center; justify-content: center; }
   .legal-main { width: min(100% - 32px, 900px); padding: 72px 0 100px; }
   .legal-hero { margin-bottom: 54px; }
   .legal-content h2 { margin-top: 50px; padding-top: 28px; }
@@ -1068,18 +1072,17 @@ button { font: inherit; }
   .hero-store-badges { --store-art-width: 108px; --store-image-width: 99px; --store-pad-x: 12px; --store-gap: 10px; }
   .store-badges--small { gap: 10px; }
   .store-badges--small img { width: var(--feature-store-image-width); }
-  .phone-composition { height: 420px; }
   .workout-card h3 { width: max-content; margin-bottom: 10px; font-size: 1.125rem; white-space: nowrap; }
   .workout-card--quick > div { max-width: 58%; }
   .workout-card--journey > div { max-width: 56%; }
   .workout-card--travel > div { max-width: 62%; }
   .workout-card--import > div { max-width: 62%; }
   .workout-card--custom > div { max-width: 65%; }
-  .workout-card--quick img { right: 0; height: 195px; }
-  .workout-card--journey img { right: -18px; height: 190px; }
-  .workout-card--travel img { right: -16px; height: 210px; }
-  .workout-card--import img { right: -16px; height: 195px; }
-  .workout-card--custom img { right: -16px; height: 195px; }
+  .workout-card--quick img { right: 0; height: 180px; }
+  .workout-card--journey img { right: -18px; height: 175px; }
+  .workout-card--travel img { right: -16px; height: 190px; }
+  .workout-card--import img { right: -16px; height: 180px; }
+  .workout-card--custom img { right: -16px; height: 180px; }
   .feature-art { height: 360px; }
   .benefit p { font-size: .77rem; }
 }
