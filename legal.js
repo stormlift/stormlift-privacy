@@ -7,6 +7,19 @@
     instagram: "",
     x: ""
   });
+  // Reuse the legal shell without editing the published policy documents.
+  const footer = document.querySelector(".footer-nav");
+  if (footer && !footer.querySelector("[data-delete-data]")) {
+    const separator = document.createElement("span");
+    separator.textContent = "•";
+    separator.setAttribute("aria-hidden", "true");
+    const deletionLink = document.createElement("a");
+    deletionLink.href = new URL("delete-data/", document.currentScript.src).href;
+    deletionLink.textContent = "Delete Your Data";
+    deletionLink.dataset.deleteData = "";
+    footer.append(separator, deletionLink);
+  }
+
   const socialAvailable = document.body.dataset.showSocialAccounts !== "false";
   const compactPlayAvailable = document.body.dataset.showCompactHeaderPlay !== "false";
 
