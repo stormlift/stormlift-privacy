@@ -457,11 +457,11 @@ button { font: inherit; }
 .site-shell-page[data-footer-legal-layout="right"] .footer-nav { grid-column: 2; justify-self: end; }
 .home-page[data-footer-legal-layout="right"] .site-footer { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); column-gap: 24px; }
 .home-page .footer-brand { justify-self: start; }
-.home-page[data-footer-legal-layout="right"] .footer-nav { grid-column: 3; grid-row: 1; max-width: 100%; }
-.footer-instagram { grid-column: 2; grid-row: 1; justify-self: center; display: inline-flex; align-items: center; gap: 11px; min-height: 44px; border-radius: 999px; color: #FFFFFF; transition: opacity 180ms ease; }
+.home-page[data-footer-legal-layout="right"] .footer-nav { grid-column: 2; grid-row: 1; justify-self: center; justify-content: center; max-width: 100%; }
+.footer-instagram { grid-column: 3; grid-row: 1; justify-self: end; display: inline-flex; align-items: center; gap: 9px; min-height: 44px; border-radius: 999px; color: #FFFFFF; transition: opacity 180ms ease; }
 .footer-instagram:hover { opacity: .82; }
-.footer-instagram__icon { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #833AB4 0%, #C13584 25%, #E1306C 50%, #F77737 75%, #FCAF45 100%); }
-.footer-instagram__icon img { width: 22px; height: 22px; filter: brightness(0) invert(1); }
+.footer-instagram__icon { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #833AB4 0%, #C13584 25%, #E1306C 50%, #F77737 75%, #FCAF45 100%); }
+.footer-instagram__icon img { width: 17px; height: 17px; filter: brightness(0) invert(1); }
 
 .motion-ready .reveal { opacity: 0; transform: translateY(28px) scale(.985); transition: opacity 720ms ease, transform 780ms var(--ease-premium); }
 .motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
@@ -1105,8 +1105,8 @@ button { font: inherit; }
   .site-shell-page[data-footer-legal-layout="right"] .footer-nav { grid-column: 1; grid-row: 2; justify-self: end; justify-content: flex-end; }
   .home-page .footer-brand { justify-self: center; }
   .home-page[data-footer-legal-layout="right"] .site-footer { grid-template-columns: 1fr; row-gap: 12px; }
-  .home-page .footer-instagram { grid-column: 1; grid-row: 2; }
-  .home-page[data-footer-legal-layout="right"] .footer-nav { grid-column: 1; grid-row: 3; justify-self: center; justify-content: center; }
+  .home-page .footer-instagram { grid-column: 1; grid-row: 3; justify-self: center; }
+  .home-page[data-footer-legal-layout="right"] .footer-nav { grid-column: 1; grid-row: 2; justify-self: center; justify-content: center; }
   .legal-main { width: min(100% - 32px, 900px); padding: 72px 0 100px; }
   .legal-hero { margin-bottom: 54px; }
   .legal-content h2 { margin-top: 50px; padding-top: 28px; }
